@@ -1,0 +1,12 @@
+{
+  "name": "react-app",
+  "version": "1.0.0",
+  "description": "Created using this guide: https://dev.to/numtostr/running-react-and-node-js-in-one-shot-with-concurrently-2oac",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
