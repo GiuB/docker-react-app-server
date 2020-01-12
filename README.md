@@ -6,10 +6,9 @@ In the first tutorial he use `concurrently` library to run multiple node (client
 
 Step to reproduce:
 
-1. npm init -y
-2. yarn global add create-react-app
-3. create-react-app client
-4. Create a Dockerfile into `client` folder
+1. yarn global add create-react-app
+2. create-react-app client
+3. Create a Dockerfile into `client` folder
 
 ```node
 FROM node:lts-slim
@@ -23,7 +22,8 @@ EXPOSE 3000
 CMD [ "npm", "start" ]
 ```
 
-5. Create node index.js file as this:
+5. mkdir server && cd server && yarn init
+6. Create node index.js file as this:
 
 ```node
 #!/usr/bin/env node
@@ -47,4 +47,25 @@ SERVER.on('listening', () => {
 SERVER.on('error', error => {
   throw new Error(`[Server]::ERROR:${error.message}`);
 });
+```
+
+7. in `server/package.json` add this "script":
+
+```json
+  "dev": "node index.js"
+```
+
+8. in `server/` add this Dockerfile:
+
+```node
+FROM node:lts-slim
+
+RUN mkdir -p /usr/src/app
+
+WORKDIR /usr/src/app
+
+EXPOSE 5000
+
+# You can change this
+CMD [ "yarn", "start"]
 ```
